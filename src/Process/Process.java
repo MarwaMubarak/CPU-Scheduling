@@ -10,12 +10,27 @@ public class Process {
     private int turnaroundTime;
     private int waitingTime;
     private int responseTime;
+    private int quantum;
+    private int isAG = 0;
 
     public Process(String processName, int arrivalTime, int burstTime, int priority) {
         this.processName = processName;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
         this.priority = priority;
+    }
+
+    public Process(String processName, int arrivalTime, int burstTime, int priority, int completionTime, int turnaroundTime, int waitingTime, int responseTime, int quantum, int isAG) {
+        this.processName = processName;
+        this.arrivalTime = arrivalTime;
+        this.burstTime = burstTime;
+        this.priority = priority;
+        this.completionTime = completionTime;
+        this.turnaroundTime = turnaroundTime;
+        this.waitingTime = waitingTime;
+        this.responseTime = responseTime;
+        this.quantum = quantum;
+        this.isAG = isAG;
     }
 
     public String getProcessName() {
@@ -81,16 +96,33 @@ public class Process {
     public void setResponseTime(int responseTime) {
         this.responseTime = responseTime;
     }
-    public void showProcess(){
+
+    public int getQuantum() {
+        return quantum;
+    }
+
+    public void setQuantum(int quantum) {
+        this.quantum = quantum;
+    }
+
+    public int getIsAG() {
+        return isAG;
+    }
+
+    public void setIsAG(int isAG) {
+        this.isAG = isAG;
+    }
+
+    public void showProcess() {
         System.out.println("-----------------------------------------");
-        System.out.println("Name: "+processName);
-        System.out.println("BurstTime: "+burstTime);
-        System.out.println("ArrivalTime: "+arrivalTime);
-        System.out.println("Priority"+priority);
-        System.out.println("CompletionTime: "+completionTime);
-        System.out.println("WaitingTime: "+waitingTime);
-        System.out.println("TurnaroundTime: "+turnaroundTime);
-        System.out.println("ResponseTime: "+responseTime);
+        System.out.println("Name: " + processName);
+        System.out.println("BurstTime: " + burstTime);
+        System.out.println("ArrivalTime: " + arrivalTime);
+        System.out.println("Priority" + priority);
+        System.out.println("CompletionTime: " + completionTime);
+        System.out.println("WaitingTime: " + waitingTime);
+        System.out.println("TurnaroundTime: " + turnaroundTime);
+        System.out.println("ResponseTime: " + responseTime);
         System.out.println("-----------------------------------------");
 
     }
