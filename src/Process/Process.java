@@ -11,26 +11,32 @@ public class Process {
     private int waitingTime;
     private int responseTime;
     private int quantum;
-    private int isAG = 0;
+    private int remainingTime;
+    private int AG = 0;
 
     public Process(String processName, int arrivalTime, int burstTime, int priority) {
         this.processName = processName;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
         this.priority = priority;
+        this.remainingTime=burstTime;
     }
-
-    public Process(String processName, int arrivalTime, int burstTime, int priority, int completionTime, int turnaroundTime, int waitingTime, int responseTime, int quantum, int isAG) {
+    public Process(String processName, int arrivalTime, int burstTime, int priority, int quantum) {
         this.processName = processName;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
         this.priority = priority;
-        this.completionTime = completionTime;
-        this.turnaroundTime = turnaroundTime;
-        this.waitingTime = waitingTime;
-        this.responseTime = responseTime;
         this.quantum = quantum;
-        this.isAG = isAG;
+        this.remainingTime=burstTime;
+    }
+    public Process(String processName, int arrivalTime, int burstTime, int priority, int quantum, int AG) {
+        this.processName = processName;
+        this.arrivalTime = arrivalTime;
+        this.burstTime = burstTime;
+        this.priority = priority;
+        this.quantum = quantum;
+        this.AG = AG;
+        this.remainingTime=burstTime;
     }
 
     public String getProcessName() {
@@ -105,12 +111,20 @@ public class Process {
         this.quantum = quantum;
     }
 
-    public int getIsAG() {
-        return isAG;
+    public int getAG() {
+        return AG;
     }
 
-    public void setIsAG(int isAG) {
-        this.isAG = isAG;
+    public void setAG(int AG) {
+        this.AG = AG;
+    }
+
+    public int getRemainingTime() {
+        return remainingTime;
+    }
+
+    public void setRemainingTime(int remainingTime) {
+        this.remainingTime = remainingTime;
     }
 
     public void showProcess() {
