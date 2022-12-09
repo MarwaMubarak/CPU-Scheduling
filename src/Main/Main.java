@@ -17,7 +17,7 @@ public class Main {
         System.out.print("Enter Context switching: ");
         int context = input.nextInt();
         for (int i = 0; i < n; i++) {
-            System.out.println("For P" + i+1 );
+            System.out.println("For P" + (i+1) );
 
             System.out.print("Enter process Name: ");
             String processName = input.next();
