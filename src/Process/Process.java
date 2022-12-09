@@ -13,6 +13,7 @@ public class Process {
     private int quantum;
     private int remainingTime;
     private int AG = 0;
+    private int remainingQuantum;
 
     public Process(String processName, int arrivalTime, int burstTime, int priority) {
         this.processName = processName;
@@ -20,6 +21,9 @@ public class Process {
         this.burstTime = burstTime;
         this.priority = priority;
         this.remainingTime=burstTime;
+        this.responseTime=-1;
+        this.remainingQuantum=quantum;
+        this.completionTime=-1;
     }
     public Process(String processName, int arrivalTime, int burstTime, int priority, int quantum) {
         this.processName = processName;
@@ -28,6 +32,12 @@ public class Process {
         this.priority = priority;
         this.quantum = quantum;
         this.remainingTime=burstTime;
+        this.responseTime=-1;
+        this.remainingQuantum=quantum;
+        this.completionTime=-1;
+
+
+
     }
     public Process(String processName, int arrivalTime, int burstTime, int priority, int quantum, int AG) {
         this.processName = processName;
@@ -37,6 +47,11 @@ public class Process {
         this.quantum = quantum;
         this.AG = AG;
         this.remainingTime=burstTime;
+        this.responseTime=-1;
+        this.remainingQuantum=quantum;
+        this.completionTime=-1;
+
+
     }
 
     public String getProcessName() {
@@ -127,12 +142,20 @@ public class Process {
         this.remainingTime = remainingTime;
     }
 
+    public int getRemainingQuantum() {
+        return remainingQuantum;
+    }
+
+    public void setRemainingQuantum(int remainingQuantum) {
+        this.remainingQuantum = remainingQuantum;
+    }
+
     public void showProcess() {
         System.out.println("-----------------------------------------");
         System.out.println("Name: " + processName);
         System.out.println("BurstTime: " + burstTime);
         System.out.println("ArrivalTime: " + arrivalTime);
-        System.out.println("Priority" + priority);
+        System.out.println("Priority: " + priority);
         System.out.println("CompletionTime: " + completionTime);
         System.out.println("WaitingTime: " + waitingTime);
         System.out.println("TurnaroundTime: " + turnaroundTime);
