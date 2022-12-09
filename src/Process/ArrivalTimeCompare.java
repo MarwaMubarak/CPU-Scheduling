@@ -1,9 +1,8 @@
 package Process;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 
-public class SortCompare implements Comparator<Process> {
+public class ArrivalTimeCompare implements Comparator<Process> {
 
 
     @Override

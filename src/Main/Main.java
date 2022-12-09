@@ -37,67 +37,22 @@ public class Main {
             System.out.print("Enter Priority: ");
             int priority = input.nextInt();
 
+            Process process =new Process(processName,arrivalTime,burstTime);
+            processes.add(process);
+
 //            System.out.print("Enter Quantum Time: ");
 //            int quantumTime = input.nextInt();
-//
+
 //          Process process =new Process(processName,arrivalTime,burstTime,priority,quantumTime,1);
 //           Process process = new Process(processName, arrivalTime, burstTime, priority);
 //           processes.add(process);
         }
-//        AG ag=new AG(processes);
-//        ag.startProcess();
-//        ag.show();
-//        RR rr = new RR(processes, context, q);
-//        rr.startProcess();
-//        rr.show();
-//        ArrayList<Process> processes=new ArrayList<Process>();
-//        System.out.print("Enter process name: ");
-//        String s = input.nextLine();
-//        System.out.print("Enter Number Of Process: ");
-//        int n = input.nextInt();
-//        System.out.print("Enter context switching: ");
-//        long c = input.nextInt();
-//
-//
-//        for (int i = 0; i <n ; i++) {
-//            System.out.print("Enter arrival: ");
-//            int x = input.nextInt();
-//            System.out.print("Enter busrt: ");
-//            int y = input.nextInt();
-//            Process p=new Process(s,x,y,c);
-//            processes.add(p);
-//        }
-//        SJF sjf =new SJF(processes) ;
-//        sjf.ans();
-//        System.out.print("Enter Round robin Time Quantum: ");
-//        int q = input.nextInt();
-//        System.out.print("Enter Context switching: ");
-//        int context = input.nextInt();
-//        for (int i = 0; i < n; i++) {
-//            System.out.println("For P" + (i+1) );
-//
-//            System.out.print("Enter process Name: ");
-//            String processName = input.next();
-//
-//            System.out.print("Enter Burst Time: ");
-//            int burstTime = input.nextInt();
-//
-//            System.out.print("Enter Arrival Time: ");
-//            int arrivalTime = input.nextInt();
-//
-//
-//            System.out.print("Enter Priority: ");
-//            int priority = input.nextInt();
-//
-//            System.out.print("Enter Quantum Time: ");
-//            int quantumTime = input.nextInt();
-//
-//            Process process =new Process(processName,arrivalTime,burstTime,priority,quantumTime,1);
-//            processes.add(process);
-//        }
-//        AG ag=new AG(processes);
-//        ag.startProcess();
-//        ag.show();
+
+
+
+        SJF sjf =new SJF(processes,context);
+        sjf.startProcess();
+        sjf.show();
 
     }
 }
@@ -147,6 +102,33 @@ P2 8 16 0
 P3 2 3 0
 P4 6 10 0
 P5 5 12 0
+
+
+*/
+
+/*
+
+SJF
+
+4
+5
+1
+P1 1 0 0
+P2 7 2 0
+P3 5 3 0
+P4 8 5 0
+
+
+7
+5
+1
+P1 1 0 0
+P2 7 1 0
+P3 3 2 0
+P4 6 3 0
+P5 5 4 0
+P6 15 5 0
+P7 8 15 0
 
 
 */

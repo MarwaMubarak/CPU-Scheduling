@@ -14,17 +14,19 @@ public class Process {
     private int remainingTime;
     private int AG = 0;
     private int remainingQuantum;
-    private long context_Switching;
-    private  int numberOfProcesses;
     public Process() {
 
     }
-    public  Process(String processName,int arrivalTime, int burstTime,long c)
+    public  Process(String processName,int arrivalTime, int burstTime)
     {
         this.processName = processName;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
-        this.context_Switching=c;
+        this.priority = priority;
+        this.remainingTime = burstTime;
+        this.responseTime = -1;
+        this.remainingQuantum = quantum;
+        this.completionTime = -1;
 
     }
 
@@ -81,14 +83,6 @@ public class Process {
         this.remainingTime = process.getRemainingTime();
         this.AG = process.getAG();
         this.remainingQuantum = process.getRemainingQuantum();
-    }
-    public  void setContextSwitching(long c)
-    {
-        this.context_Switching=c;
-    }
-    public  long getContext_Switching()
-    {
-        return context_Switching;
     }
 
 

@@ -1,7 +1,7 @@
 package RR;
 import java.util.*;
 import Process.Process;
-import Process.SortCompare;
+import Process.ArrivalTimeCompare;
 
 public class RR {
 
@@ -20,7 +20,7 @@ public class RR {
         this.quantum=quantum;
         this.avaTurnAround=0;
         this.avaWaitingTime=0;
-        Collections.sort(processes,new SortCompare());
+        Collections.sort(processes,new ArrivalTimeCompare());
 //        for (int i = 0; i <processes.size(); i++) {
 //            System.out.println( processes.get(i).getProcessName());
 //        }
