@@ -5,8 +5,8 @@ import java.util.*;
 import Process.Process;
 
 public class AG {
-    private ArrayList<Process> processes = new ArrayList<Process>();
-    private ArrayList<Process> finalProcesses = new ArrayList<Process>();
+    private ArrayList<Process> processes;
+    private ArrayList<Process> finalProcesses = new ArrayList<>();
     private ArrayList<Process>readyQueue=new ArrayList<>();
     private Process currProcess=null;
     private int time;
@@ -263,71 +263,5 @@ public class AG {
     }
 
 
-
-
-/*
-    public void AG1() {
-        if(currProcess.getResponseTime()==-1)
-            currProcess.setResponseTime(time);
-        int quarterTime=(currProcess.getRemainingQuantum()+3)/4;
-        int remainingTime=currProcess.getRemainingTime()-quarterTime;
-        int remainingQuantum=currProcess.getRemainingQuantum()-quarterTime;
-        time+=quarterTime;
-        if(remainingTime>0){
-            time+=quarterTime;
-            currProcess.setRemainingTime(remainingTime);
-            currProcess.setRemainingQuantum(remainingQuantum);
-            Process nexProcess=getHighestPriority();
-            if(!nexProcess.getProcessName().equals(currProcess.getProcessName())){
-                int newQuantum=currProcess.getQuantum()+remainingQuantum/2;
-                currProcess.setRemainingQuantum(newQuantum);
-                finalProcesses.replace(currProcess.getProcessName(),currProcess);
-                currProcess=nexProcess;
-            }
-
-        }else if(remainingTime==0){
-            time+=quarterTime;
-            currProcess.setRemainingTime(0);
-            currProcess.setRemainingQuantum(0);
-            currProcess.setCompletionTime(time);
-            finalProcesses.replace(currProcess.getProcessName(),currProcess);
-            removeCompleteProcess(currProcess.getProcessName());
-            currProcess=getFirstArrival();
-        }else{
-            time+=currProcess.getRemainingTime();
-            currProcess.setRemainingTime(0);
-            currProcess.setRemainingQuantum(0);
-            currProcess.setCompletionTime(time);
-            finalProcesses.replace(currProcess.getProcessName(),currProcess);
-            removeCompleteProcess(currProcess.getProcessName());
-            currProcess=getFirstArrival();
-        }
-
-    }
-
-*/
-
-
-
-
 }
 
-/*
- int firstQuarter = (currProcess.getQuantum() + 3) / 4;
-        currProcess.setResponseTime(time);
-        int remainingTime = currProcess.getRemainingTime() - firstQuarter;
-        if (remainingTime > 0) {
-            time += firstQuarter;
-            currProcess.setRemainingTime(remainingTime);
-            int newQuantum = currProcess.getQuantum() + 2;
-            currProcess.setQuantum(newQuantum);
-            processes.add(currProcess);
-            finalProcesses.replace(currProcess.getProcessName(), currProcess);
-
-        } else if (remainingTime == 0) {
-            time += firstQuarter;
-            currProcess.setRemainingTime(remainingTime);
-            processes.add(currProcess);
-            finalProcesses.replace(currProcess.getProcessName(), currProcess);
-    }
- */
