@@ -10,6 +10,7 @@ public class AG {
     private ArrayList<Process>readyQueue=new ArrayList<>();
     private Process currProcess=null;
     private int time;
+    private HashMap<String,Process>uniqueProcesses;
 
     public AG(ArrayList<Process> processes) {
         this.processes = processes;
@@ -76,7 +77,9 @@ public class AG {
                         currProcess.setRemainingQuantum((remainingQuantum + 1) / 2 + currProcess.getQuantum());
                         currProcess.setQuantum(currProcess.getRemainingQuantum());
                         System.out.println(currProcess.getProcessName());
-                        finalProcesses.add(currProcess);
+                        Process finalProcess = new Process();
+                        finalProcess.equals(currProcess);
+                        finalProcesses.add(finalProcess);
                         currProcess.setAG(1);
                         readyQueue.add(currProcess);
                         currProcess = highestPriority;
@@ -90,7 +93,9 @@ public class AG {
                     currProcess.setRemainingQuantum(0);
                     currProcess.setCompletionTime(time);
                     System.out.println(currProcess.getProcessName());
-                    finalProcesses.add(currProcess);
+                    Process finalProcess = new Process();
+                    finalProcess.equals(currProcess);
+                    finalProcesses.add(finalProcess);
                     currProcess = null;
                 }
 
@@ -111,7 +116,9 @@ public class AG {
                         currProcess.setRemainingQuantum(remainingQuantum + currProcess.getQuantum());
                         currProcess.setQuantum(currProcess.getRemainingQuantum());
                         System.out.println(currProcess.getProcessName());
-                        finalProcesses.add(currProcess);
+                        Process finalProcess = new Process();
+                        finalProcess.equals(currProcess);
+                        finalProcesses.add(finalProcess);
                         currProcess.setAG(1);
                         readyQueue.add(currProcess);
                         currProcess = lessTime;
@@ -125,7 +132,9 @@ public class AG {
                     currProcess.setRemainingQuantum(0);
                     currProcess.setCompletionTime(time);
                     System.out.println(currProcess.getProcessName());
-                    finalProcesses.add(currProcess);
+                    Process finalProcess = new Process();
+                    finalProcess.equals(currProcess);
+                    finalProcesses.add(finalProcess);
                     currProcess = null;
                 }
 
@@ -158,7 +167,9 @@ public class AG {
                             currProcess.setRemainingQuantum(remainingQuantum + currProcess.getQuantum());
                             currProcess.setQuantum(currProcess.getRemainingQuantum());
                             System.out.println(currProcess.getProcessName());
-                            finalProcesses.add(currProcess);
+                            Process finalProcess = new Process();
+                            finalProcess.equals(currProcess);
+                            finalProcesses.add(finalProcess);
                             currProcess.setAG(1);
                             readyQueue.add(currProcess);
                             currProcess = lessTime;
@@ -172,7 +183,9 @@ public class AG {
                         currProcess.setRemainingQuantum(0);
                         currProcess.setCompletionTime(time);
                         System.out.println(currProcess.getProcessName());
-                        finalProcesses.add(currProcess);
+                        Process finalProcess = new Process();
+                        finalProcess.equals(currProcess);
+                        finalProcesses.add(finalProcess);
                         currProcess = null;
                         break;
                     }

@@ -15,30 +15,35 @@ public class Process {
     private int AG = 0;
     private int remainingQuantum;
 
+    public Process() {
+
+    }
+
     public Process(String processName, int arrivalTime, int burstTime, int priority) {
         this.processName = processName;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
         this.priority = priority;
-        this.remainingTime=burstTime;
-        this.responseTime=-1;
-        this.remainingQuantum=quantum;
-        this.completionTime=-1;
+        this.remainingTime = burstTime;
+        this.responseTime = -1;
+        this.remainingQuantum = quantum;
+        this.completionTime = -1;
     }
+
     public Process(String processName, int arrivalTime, int burstTime, int priority, int quantum) {
         this.processName = processName;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
         this.priority = priority;
         this.quantum = quantum;
-        this.remainingTime=burstTime;
-        this.responseTime=-1;
-        this.remainingQuantum=quantum;
-        this.completionTime=-1;
-
+        this.remainingTime = burstTime;
+        this.responseTime = -1;
+        this.remainingQuantum = quantum;
+        this.completionTime = -1;
 
 
     }
+
     public Process(String processName, int arrivalTime, int burstTime, int priority, int quantum, int AG) {
         this.processName = processName;
         this.arrivalTime = arrivalTime;
@@ -46,13 +51,29 @@ public class Process {
         this.priority = priority;
         this.quantum = quantum;
         this.AG = AG;
-        this.remainingTime=burstTime;
-        this.responseTime=-1;
-        this.remainingQuantum=quantum;
-        this.completionTime=-1;
+        this.remainingTime = burstTime;
+        this.responseTime = -1;
+        this.remainingQuantum = quantum;
+        this.completionTime = -1;
 
 
     }
+
+    public void equals(Process process) {
+        this.processName = process.getProcessName();
+        this.arrivalTime = process.getArrivalTime();
+        this.burstTime = process.getBurstTime();
+        this.priority =process.getPriority();
+        this.completionTime = process.getCompletionTime();
+        this.turnaroundTime = process.getTurnaroundTime();
+        this.waitingTime = process.getWaitingTime();
+        this.responseTime = process.getResponseTime();
+        this.quantum = process.getQuantum();
+        this.remainingTime = process.getRemainingTime();
+        this.AG = process.getAG();
+        this.remainingQuantum = process.getRemainingQuantum();
+    }
+
 
     public String getProcessName() {
         return processName;
@@ -92,6 +113,10 @@ public class Process {
 
     public void setCompletionTime(int completionTime) {
         this.completionTime = completionTime;
+        int waiting=completionTime-arrivalTime-burstTime;
+        setWaitingTime(waiting);
+        int turnaround=getWaitingTime()+getBurstTime();
+        setTurnaroundTime(turnaround);
     }
 
     public int getTurnaroundTime() {
@@ -160,6 +185,7 @@ public class Process {
         System.out.println("WaitingTime: " + waitingTime);
         System.out.println("TurnaroundTime: " + turnaroundTime);
         System.out.println("ResponseTime: " + responseTime);
+        System.out.println("RemainingQuantum: "+remainingQuantum);
         System.out.println("-----------------------------------------");
 
     }
