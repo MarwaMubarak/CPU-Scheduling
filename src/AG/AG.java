@@ -106,7 +106,7 @@ public class AG {
                     updateReadyQueue();
                     Process lessTime = getLessRemainingTime();
                     if (lessTime.getProcessName().equals(currProcess.getProcessName())) {
-                        currProcess.setAG(2);
+                        currProcess.setAG(3);
                     } else {
                         currProcess.setRemainingQuantum(remainingQuantum + currProcess.getQuantum());
                         currProcess.setQuantum(currProcess.getRemainingQuantum());
@@ -130,6 +130,54 @@ public class AG {
                 }
 
 
+            }else if(currProcess.getAG()==3){
+                int quarterTime = (currProcess.getRemainingQuantum()+1) / 2;
+                for (int i = 1; i <= quarterTime; i++) {
+
+                    if (currProcess == null) {
+                        if (readyQueue.isEmpty())
+                            getNextReady();
+                        currProcess = readyQueue.get(0);
+                        readyQueue.remove(0);
+                    }
+                    if (currProcess.getResponseTime() == -1)
+                        currProcess.setResponseTime(time);
+
+                    int remainingTime = currProcess.getRemainingTime() - 1;
+                    int remainingQuantum = currProcess.getRemainingQuantum() - 1;
+                    if (remainingTime > 0) {
+                        time ++;
+                        currProcess.setRemainingTime(remainingTime);
+                        currProcess.setRemainingQuantum(remainingQuantum);
+                        updateReadyQueue();
+                        Process lessTime = getLessRemainingTime();
+                        if (lessTime.getProcessName().equals(currProcess.getProcessName())) {
+                            if(quarterTime==i)
+                                currProcess.setAG(3);
+                        } else {
+                            currProcess.setRemainingQuantum(remainingQuantum + currProcess.getQuantum());
+                            currProcess.setQuantum(currProcess.getRemainingQuantum());
+                            System.out.println(currProcess.getProcessName());
+                            finalProcesses.add(currProcess);
+                            currProcess.setAG(1);
+                            readyQueue.add(currProcess);
+                            currProcess = lessTime;
+                        }
+
+                    } else {
+
+                        time ++;
+                        updateReadyQueue();
+                        currProcess.setRemainingTime(0);
+                        currProcess.setRemainingQuantum(0);
+                        currProcess.setCompletionTime(time);
+                        System.out.println(currProcess.getProcessName());
+                        finalProcesses.add(currProcess);
+                        currProcess = null;
+                        break;
+                    }
+
+                }
             }
 
         }
