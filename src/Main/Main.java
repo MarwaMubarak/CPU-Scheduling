@@ -1,11 +1,11 @@
 package Main;
 
-import java.util.*;
-
-import AG.AG;
+import Priority.Priority;
 import Process.Process;
-import RR.RR;
 import SJF.SJF;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Main {
@@ -17,10 +17,10 @@ public class Main {
         ArrayList<Process> processes = new ArrayList<Process>();
         System.out.print("Enter Number Of Process: ");
         int n = input.nextInt();
-        System.out.print("Enter Round robin Time Quantum: ");
-        int q = input.nextInt();
-        System.out.print("Enter Context switching: ");
-        int context = input.nextInt();
+//        System.out.print("Enter Round robin Time Quantum: ");
+//        int q = input.nextInt();
+//        System.out.print("Enter Context switching: ");
+//        int context = input.nextInt();
         for (int i = 0; i < n; i++) {
             System.out.println("For P" + (i + 1));
 
@@ -43,11 +43,21 @@ public class Main {
 //            System.out.print("Enter Quantum Time: ");
 //            int quantumTime = input.nextInt();
 
-//          Process process =new Process(processName,arrivalTime,burstTime,priority,quantumTime,1);
-           Process process = new Process(processName, arrivalTime, burstTime, priority);
-           processes.add(process);
-        }
+            Process process = new Process(processName, arrivalTime, burstTime, priority);
+            processes.add(process);
+//           Process process = new Process(processName, arrivalTime, burstTime, priority);
+//           processes.add(process);
 
+        }
+        /*
+        5
+        P1 4 0 1
+        P2 3 0 2
+        P3 7 6 1
+        P4 4 11 3
+        P5 2 12 2
+
+         */
 
 
 //       AG ag=new AG(processes);
@@ -56,9 +66,12 @@ public class Main {
 //        RR rr=new RR(processes,context,q);
 //        rr.startProcess();
 //        rr.show();
-        SJF sjf =new SJF(processes,context);
-        sjf.startProcess();
-        sjf.show();
+//        SJF sjf = new SJF(processes, context);
+//        sjf.startProcess();
+//        sjf.show();
+        Priority priority =new Priority(processes);
+        priority.startProcess();
+        priority.show();
 
     }
 }
