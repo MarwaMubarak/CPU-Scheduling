@@ -14,11 +14,13 @@ public class Process {
     private int remainingTime;
     private int AG = 0;
     private int remainingQuantum;
+    private int middle;
+
     public Process() {
 
     }
-    public  Process(String processName,int arrivalTime, int burstTime)
-    {
+
+    public Process(String processName, int arrivalTime, int burstTime) {
         this.processName = processName;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
@@ -74,7 +76,7 @@ public class Process {
         this.processName = process.getProcessName();
         this.arrivalTime = process.getArrivalTime();
         this.burstTime = process.getBurstTime();
-        this.priority =process.getPriority();
+        this.priority = process.getPriority();
         this.completionTime = process.getCompletionTime();
         this.turnaroundTime = process.getTurnaroundTime();
         this.waitingTime = process.getWaitingTime();
@@ -83,8 +85,16 @@ public class Process {
         this.remainingTime = process.getRemainingTime();
         this.AG = process.getAG();
         this.remainingQuantum = process.getRemainingQuantum();
+        this.middle = process.getMiddle();
     }
 
+    public int getMiddle() {
+        return middle;
+    }
+
+    public void setMiddle(int middle) {
+        this.middle = middle;
+    }
 
     public String getProcessName() {
         return processName;
@@ -124,9 +134,9 @@ public class Process {
 
     public void setCompletionTime(int completionTime) {
         this.completionTime = completionTime;
-        int waiting=completionTime-arrivalTime-burstTime;
+        int waiting = completionTime - arrivalTime - burstTime;
         setWaitingTime(waiting);
-        int turnaround=getWaitingTime()+getBurstTime();
+        int turnaround = getWaitingTime() + getBurstTime();
         setTurnaroundTime(turnaround);
     }
 
@@ -196,7 +206,7 @@ public class Process {
         System.out.println("WaitingTime: " + waitingTime);
         System.out.println("TurnaroundTime: " + turnaroundTime);
         System.out.println("ResponseTime: " + responseTime);
-        System.out.println("RemainingQuantum: "+remainingQuantum);
+        System.out.println("RemainingQuantum: " + remainingQuantum);
         System.out.println("-----------------------------------------");
 
     }

@@ -37,19 +37,25 @@ public class Main {
             System.out.print("Enter Priority: ");
             int priority = input.nextInt();
 
-            Process process =new Process(processName,arrivalTime,burstTime);
-            processes.add(process);
+//            Process process =new Process(processName,arrivalTime,burstTime);
+//            processes.add(process);
 
 //            System.out.print("Enter Quantum Time: ");
 //            int quantumTime = input.nextInt();
 
 //          Process process =new Process(processName,arrivalTime,burstTime,priority,quantumTime,1);
-//           Process process = new Process(processName, arrivalTime, burstTime, priority);
-//           processes.add(process);
+           Process process = new Process(processName, arrivalTime, burstTime, priority);
+           processes.add(process);
         }
 
 
 
+//       AG ag=new AG(processes);
+//        ag.startProcess();
+//        ag.show();
+//        RR rr=new RR(processes,context,q);
+//        rr.startProcess();
+//        rr.show();
         SJF sjf =new SJF(processes,context);
         sjf.startProcess();
         sjf.show();
