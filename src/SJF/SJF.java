@@ -7,11 +7,11 @@ import java.util.*;
 
 public class SJF {
 
-    int sum_waiting = 0, sum_turnround = 0;
+    int sumWaiting = 0, sumTurnround = 0;
     private ArrayList<Process> processes = new ArrayList<Process>();
     private int time;
     private int context;
-    private ArrayList<Process> process_order = new ArrayList<>();
+    private ArrayList<Process> processOrder = new ArrayList<>();
     private ArrayList<Process> readyQueue = new ArrayList<>();
     private HashMap<String, Process> uniqueProcesses = new HashMap<String, Process>();
     private Process currProcess;
@@ -75,7 +75,7 @@ public class SJF {
                 time += context;
                 Process tempProcess = new Process();
                 tempProcess.equals(currProcess);
-                process_order.add(tempProcess);
+                processOrder.add(tempProcess);
                 //System.out.println(currProcess.getProcessName());
 
             }
@@ -99,7 +99,7 @@ public class SJF {
                     currProcess.setMiddle(time);
                     Process tempProcess = new Process();
                     tempProcess.equals(currProcess);
-                    process_order.add(tempProcess);
+                    processOrder.add(tempProcess);
 
                 }
 
@@ -109,18 +109,18 @@ public class SJF {
     }
 
     public void show() {
-        int n = process_order.size();
+        int n = processOrder.size();
         System.out.println("The order of processes: ");
         for (int i = 0; i < n; i++) {
-            System.out.println(process_order.get(i).getProcessName() + "  " + process_order.get(i).getMiddle());
-            uniqueProcesses.put(process_order.get(i).getProcessName(), process_order.get(i));
+            System.out.println(processOrder.get(i).getProcessName() + "  " + processOrder.get(i).getMiddle());
+            uniqueProcesses.put(processOrder.get(i).getProcessName(), processOrder.get(i));
         }
         System.out.println();
         System.out.println("---------------------------------------------------------");
         System.out.println("P\t\t" + "AT\t\t" + "WT\t\t" + "TAT\t\t" + "CT\t\t");
         for (Map.Entry<String, Process> process : uniqueProcesses.entrySet()) {
-            sum_waiting += process.getValue().getWaitingTime();
-            sum_turnround += process.getValue().getTurnaroundTime();
+            sumWaiting += process.getValue().getWaitingTime();
+            sumTurnround += process.getValue().getTurnaroundTime();
             System.out.println(process.getValue().getProcessName() + "\t\t"
                     + process.getValue().getArrivalTime() + "\t\t"
                     + process.getValue().getWaitingTime() + "\t\t"
@@ -129,8 +129,8 @@ public class SJF {
             );
         }
         System.out.println("---------------------------------------------------------");
-        System.out.println("average waiting time is: " + ((double) sum_waiting / (double) n));
-        System.out.println("average turnround time is: " + ((double) sum_turnround / (double) n));
+        System.out.println("average waiting time is: " + ((double) sumWaiting / (double) uniqueProcesses.size()));
+        System.out.println("average turnround time is: " + ((double) sumTurnround / (double) uniqueProcesses.size()));
     }
 
 }
