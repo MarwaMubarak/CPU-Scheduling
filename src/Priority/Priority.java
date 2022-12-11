@@ -17,13 +17,13 @@ public class Priority {
     private ArrayList<Process> readyQueue = new ArrayList<>();
     private HashMap<String, Process> uniqueProcesses = new HashMap<String, Process>();
     private Process currProcess;
-    private int priorityCounter;
+    private int starvation;
 
     public Priority(ArrayList<Process> pros, int priorityCounter) {
         this.processes = pros;
         this.time = 0;
         this.currProcess = null;
-        this.priorityCounter = priorityCounter;
+        this.starvation = priorityCounter;
 
     }
 
@@ -96,7 +96,7 @@ public class Priority {
                 int c = readyQueue.get(i).getCounter();
                 c++;
                 readyQueue.get(i).setCounter(c);
-                if (readyQueue.get(i).getCounter() >= priorityCounter) {
+                if (readyQueue.get(i).getCounter() >= starvation) {
                     int p = readyQueue.get(i).getPriority();
                     int newP = Math.max(0, p - 1);
                     readyQueue.get(i).setPriority(newP);
