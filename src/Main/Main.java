@@ -184,7 +184,7 @@ P7 8 15 0
 */
 
     }
-    
+
     public static void PriorityTest(){
         ArrayList<Process> processes = new ArrayList<Process>();
         System.out.print("Enter Number Of Process: ");
@@ -218,7 +218,7 @@ P7 8 15 0
         /*
         Priority
 5
-2
+7
 P1 4 0 1
 P2 3 0 2
 P3 7 6 1
