@@ -1,7 +1,9 @@
 package Main;
 
+import AG.AG;
 import Priority.Priority;
 import Process.Process;
+import RR.RR;
 import SJF.SJF;
 
 import java.util.ArrayList;
@@ -13,14 +15,15 @@ public class Main {
 
     static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void RRTest() {
         ArrayList<Process> processes = new ArrayList<Process>();
         System.out.print("Enter Number Of Process: ");
         int n = input.nextInt();
-//        System.out.print("Enter Round robin Time Quantum: ");
-//        int q = input.nextInt();
-//        System.out.print("Enter Context switching: ");
-//        int context = input.nextInt();
+        System.out.print("Enter Round robin Time Quantum: ");
+        int q = input.nextInt();
+        System.out.print("Enter Context switching: ");
+        int context = input.nextInt();
+
         for (int i = 0; i < n; i++) {
             System.out.println("For P" + (i + 1));
 
@@ -33,63 +36,19 @@ public class Main {
             System.out.print("Enter Arrival Time: ");
             int arrivalTime = input.nextInt();
 
-
             System.out.print("Enter Priority: ");
             int priority = input.nextInt();
 
-//            Process process =new Process(processName,arrivalTime,burstTime);
-//            processes.add(process);
 
-//            System.out.print("Enter Quantum Time: ");
-//            int quantumTime = input.nextInt();
-
-            Process process = new Process(processName, arrivalTime, burstTime, priority);
+            Process process = new Process(processName, arrivalTime, burstTime,priority);
             processes.add(process);
-//           Process process = new Process(processName, arrivalTime, burstTime, priority);
-//           processes.add(process);
-
         }
+        RR rr = new RR(processes, context, q);
+        rr.startProcess();
+        rr.show();
+
+
         /*
-        5
-        P1 4 0 1
-        P2 3 0 2
-        P3 7 6 1
-        P4 4 11 3
-        P5 2 12 2
-
-         */
-
-
-//       AG ag=new AG(processes);
-//        ag.startProcess();
-//        ag.show();
-//        RR rr=new RR(processes,context,q);
-//        rr.startProcess();
-//        rr.show();
-//        SJF sjf = new SJF(processes, context);
-//        sjf.startProcess();
-//        sjf.show();
-        Priority priority =new Priority(processes);
-        priority.startProcess();
-        priority.show();
-
-    }
-}
-/*
-AG
-
-4
-4
-1
-P1 17 0 4 7
-P2 6 2 7 9
-P3 11 5 3 4
-P4 4 15 6 6
-
-*/
-
-
-/*
 RR
 
 
@@ -124,6 +83,73 @@ P5 5 12 0
 
 
 */
+
+    }
+
+    public static void AGTest() {
+        ArrayList<Process> processes = new ArrayList<Process>();
+        System.out.print("Enter Number Of Process: ");
+        int n = input.nextInt();
+        for (int i = 0; i < n; i++) {
+            System.out.println("For P" + (i + 1));
+
+            System.out.print("Enter process Name: ");
+            String processName = input.next();
+
+            System.out.print("Enter Burst Time: ");
+            int burstTime = input.nextInt();
+
+            System.out.print("Enter Arrival Time: ");
+            int arrivalTime = input.nextInt();
+
+
+            System.out.print("Enter Priority: ");
+            int priority = input.nextInt();
+
+            System.out.print("Enter Quantum Time: ");
+            int quantumTime = input.nextInt();
+
+            Process process = new Process(processName, arrivalTime, burstTime, priority, quantumTime, 1);
+            processes.add(process);
+
+        }
+        AG ag = new AG(processes);
+        ag.startProcess();
+        ag.show();
+        /*
+AG
+
+4
+P1 17 0 4 7
+P2 6 2 7 9
+P3 11 5 3 4
+P4 4 15 6 6
+
+*/
+    }
+
+
+    public static void main(String[] args) {
+            //AGTest();
+            //RRTest();
+    }
+}
+
+
+/*
+AG
+
+4
+4
+1
+P1 17 0 4 7
+P2 6 2 7 9
+P3 11 5 3 4
+P4 4 15 6 6
+
+*/
+
+
 
 /*
 

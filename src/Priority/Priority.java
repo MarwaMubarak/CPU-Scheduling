@@ -17,15 +17,13 @@ public class Priority {
     private ArrayList<Process> readyQueue = new ArrayList<>();
     private HashMap<String, Process> uniqueProcesses = new HashMap<String, Process>();
     private Process currProcess;
-    private int starvation_value;
-    private int starvation_time;
-    int time_check = 0;
+    private int priorityCounter;
 
-    public Priority(ArrayList<Process> pros) {
+    public Priority(ArrayList<Process> pros, int priorityCounter) {
         this.processes = pros;
         this.time = 0;
         this.currProcess = null;
-
+        this.priorityCounter = priorityCounter;
 
     }
 
@@ -86,12 +84,24 @@ public class Priority {
                 //System.out.println(currProcess.getProcessName());
 
             }
+
             currProcess = newProcess;
+            currProcess.setCounter(0);
 
             readyQueue.remove(0);
             int remainingTime = currProcess.getRemainingTime() - 1;
             currProcess.setRemainingTime(remainingTime);
             time++;
+            for (int i = 0; i < readyQueue.size(); i++) {
+                int c = readyQueue.get(i).getCounter();
+                c++;
+                readyQueue.get(i).setCounter(c);
+                if (readyQueue.get(i).getCounter() >= priorityCounter) {
+                    int p = readyQueue.get(i).getPriority();
+                    int newP = Math.max(0, p - 1);
+                    readyQueue.get(i).setPriority(newP);
+                }
+            }
             if (currProcess.getRemainingTime() != 0) {
                 readyQueue.add(currProcess);
             } else {
@@ -107,13 +117,10 @@ public class Priority {
                     Process tempProcess = new Process();
                     tempProcess.equals(currProcess);
                     process_order.add(tempProcess);
-                   }
+                }
 
             }
-//            for (int i = 0; i < readyQueue.size(); i++) {
-//                int q = readyQueue.get(i).getPriority();
-//                readyQueue.get(i).setPriority(q - 1);
-//            }
+
         }
 
     }

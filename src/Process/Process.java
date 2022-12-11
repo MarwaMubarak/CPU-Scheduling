@@ -15,6 +15,7 @@ public class Process {
     private int AG = 0;
     private int remainingQuantum;
     private int middle;
+    private int counter;
 
     public Process() {
 
@@ -29,6 +30,7 @@ public class Process {
         this.responseTime = -1;
         this.remainingQuantum = quantum;
         this.completionTime = -1;
+        this.counter=0;
 
     }
 
@@ -41,6 +43,7 @@ public class Process {
         this.responseTime = -1;
         this.remainingQuantum = quantum;
         this.completionTime = -1;
+        this.counter=0;
     }
 
     public Process(String processName, int arrivalTime, int burstTime, int priority, int quantum) {
@@ -53,7 +56,7 @@ public class Process {
         this.responseTime = -1;
         this.remainingQuantum = quantum;
         this.completionTime = -1;
-
+        this.counter=0;
 
     }
 
@@ -68,6 +71,7 @@ public class Process {
         this.responseTime = -1;
         this.remainingQuantum = quantum;
         this.completionTime = -1;
+        this.counter=0;
 
 
     }
@@ -86,6 +90,16 @@ public class Process {
         this.AG = process.getAG();
         this.remainingQuantum = process.getRemainingQuantum();
         this.middle = process.getMiddle();
+        this.counter=process.getCounter();
+    }
+
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 
     public int getMiddle() {
